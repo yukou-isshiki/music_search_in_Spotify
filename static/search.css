@@ -1,0 +1,26 @@
+html * {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    background: #e9e9e9;
+}
+
+.sidebar {
+    margin-top 0px;
+    width: 340px;
+    height: 100%;
+    padding: 50px 20px;
+    background: #e9e9e9;
+}
+
+.maincontents {
+    margin-top 0px;
+    margin-left: 340px;
+    padding: 20px;
+}
+.song {
+    border: 5px solid # 5abbe4;
+    padding: 25px;
+    width: 300px;
+}

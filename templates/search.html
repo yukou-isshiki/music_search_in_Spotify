@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="/static/search.css">
+    <link rel="script" href="/static/search.js">
+</head>
+
+<body>
+<div class="sidebar">
+    <header>
+        <h1 class="header-logo">アーティスト</h1>
+    </header>
+    <nav class="artist">
+        {% block content %}
+        {% for k,v in results[1].items() %}
+        <form action="/search" name="artist" method="post"><a href="/search?query={% print(results[2]) %}&artist={% print(k) %}">{% print(k) %}({% print(v) %})</a></form>
+        {% endfor %}
+        {% endblock %}
+    </nav>
+</div>
+<div class="maincontents">
+    <section>
+    <div class="song">
+        {% block content2 %}
+        {% for result in results[0] %}
+        {% set album_name = result["album_name"] %}
+        {% set image = result["image"] %}
+        {% set album_url = result["album_url"] %}
+        <img src="{% print(image) %}" alt width="180" height="180" class="img">
+        <h1><a href="{% print(album_url) %}">{% print(album_name) %}</a></h1>
+        {% set artists = result["artist"] %}
+        {% for artist in artists %}
+        <p><h3>{% print(artist) %}</h3></p>
+        {% endfor %}
+        {% endfor %}
+        {% endblock %}
+    </div>
+    </section>
+</div>
+</body>
+</html>
